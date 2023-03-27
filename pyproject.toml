@@ -4,6 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["John Torres <johnnyjamestorres@outlook.com>"]
 readme = "README.md"
+license = "MIT"
 packages = [{include = "panorama_sidekick"}]
 
 [tool.poetry.dependencies]
