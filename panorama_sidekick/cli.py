@@ -8,7 +8,7 @@ from panorama_sidekick.show import device_groups
 @click.pass_context
 @click.option("--hostname", envvar="PANORAMA_HOSTNAME")
 @click.option("--api_key", envvar="PANORAMA_KEY")
-def cli(ctx, hostname, api_key):
+def cli(ctx: click.Context, hostname: str, api_key: str) -> None:
     """Main console script entry point."""
     ctx.obj = Panorama(hostname, api_key)
 
