@@ -61,9 +61,11 @@ jobs:
           ruff check panorama_sidekick/ tests/
 
       - name: Run formatter
+        run: |
           black --check panorama_sidekick/ tests/
 
       - name: Run type checker
+        run: |
           mypy --strict panorama_sidekick/ tests/
 
       - name: Run tests
