@@ -25,7 +25,8 @@ jobs:
         id: changed-python-files
         uses: tj-actions/changed-files@v35
         with:
-          files: **/*.py
+          files: |
+            **/*.py
 
       - name: Set up python ${{ matrix.python-version }}
         id: setup-python
