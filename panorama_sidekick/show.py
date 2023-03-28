@@ -10,11 +10,7 @@ from panorama_sidekick.panorama import Panorama
 @click.command()
 @click.pass_obj
 def device_groups(panorama: Panorama) -> None:
-    """Print a list of device groups.
-
-    Args:
-        panorama (Panorama): Panorama object
-    """
+    """Print a list of device groups."""
     cmd = "<show><devicegroups/></show>"
     show_devicegroups = panorama.operational_command(cmd)
     tree = ET.fromstring(show_devicegroups)
@@ -27,6 +23,7 @@ def device_groups(panorama: Panorama) -> None:
 @click.command()
 @click.pass_obj
 def firewalls(panorama: Panorama) -> None:
+    """Print a list of firewalls."""
     cmd = "<show><devicegroups/></show>"
     show_devicegroups = panorama.operational_command(cmd)
     tree = ET.fromstring(show_devicegroups)
