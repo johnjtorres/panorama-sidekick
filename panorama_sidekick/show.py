@@ -30,6 +30,8 @@ def firewalls(panorama: Panorama) -> None:
     cmd = "<show><devicegroups/></show>"
     show_devicegroups = panorama.operational_command(cmd)
     tree = ET.fromstring(show_devicegroups)
-    firewall_names = {fw.text for fw in tree.findall(".//devices/entry/hostname")}
+    firewall_names = {
+        fw.text for fw in tree.findall(".//devices/entry/hostname") if fw.text
+    }
     firewall_names_formatted = "\n".join(sorted(firewall_names))
     click.echo(firewall_names_formatted)
