@@ -7,7 +7,7 @@ from panorama_sidekick.panorama import Panorama
 def test_pano_show_device_groups(runner, monkeypatch):
     """Test for listing device groups."""
     test_xml = """\
-    <response>
+    <response status="success>
       <result>
         <devicegroups>
           <entry name="DG1"></entry>
