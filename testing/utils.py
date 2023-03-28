@@ -3,7 +3,7 @@
 import os
 
 
-def read_test_data_file(filename: str):
+def read_test_data_file(filename: str) -> str:
     """Read in XML test data file."""
     here = os.path.dirname(os.path.abspath(__file__))
     xml_file = os.path.join(here, "test_data", filename)
