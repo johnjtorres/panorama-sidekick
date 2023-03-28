@@ -1,11 +1,18 @@
 [tool.poetry]
 name = "panorama-sidekick"
 version = "0.1.0"
-description = ""
+description = "A CLI application to get helpful information from a Palo Alto Panorama device. "
 authors = ["John Torres <johnnyjamestorres@outlook.com>"]
 readme = "README.md"
+repository = "https://github.com/johnjtorres/panorama-sidekick"
 license = "MIT"
 packages = [{include = "panorama_sidekick"}]
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10"
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
