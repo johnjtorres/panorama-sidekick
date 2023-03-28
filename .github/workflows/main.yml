@@ -1,15 +1,20 @@
 name: CI
 
-on: push
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test:
     strategy:
       fail-fast: false
       matrix:
-        os: ["ubuntu-latest"]
         python-version: ["3.8", "3.9", "3.10"]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -46,14 +51,21 @@ jobs:
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction
 
+      - name: Activate virtualenv
+        run: |
+          . .venv/bin/activate
+          echo PATH=$PATH >> $GITHUB_ENV
+
       - name: Run linting
         run: |
-          source .venv/bin/activate
           ruff check panorama_sidekick/ tests/
-          black panorama_sidekick/ tests/ --check
+
+      - name: Run formatter
+          black --check panorama_sidekick/ tests/
+
+      - name: Run type checker
           mypy --strict panorama_sidekick/ tests/
 
       - name: Run tests
         run: |
-          source .venv/bin/activate
           pytest tests/
