@@ -1,9 +1,36 @@
 <response status="success">
     <result>
     <devicegroups>
-        <entry name="DG1"></entry>
-        <entry name="DG2"></entry>
-        <entry name="DG3"></entry>
+        <entry name="DG1">
+            <devices>
+                <entry name="111111111111">
+                    <hostname>FW1</hostname>
+                </entry>
+                <entry name="222222222222">
+                    <hostname>FW2</hostname>
+                </entry>
+            </devices> 
+        </entry>
+        <entry name="DG2">
+            <devices>
+                <entry name="333333333333">
+                    <hostname>FW3</hostname>
+                </entry>
+                <entry name="444444444444">
+                    <hostname>FW4</hostname>
+                </entry>
+            </devices> 
+        </entry>
+        <entry name="DG3">
+            <devices>
+                <entry name="555555555555">
+                    <hostname>FW5</hostname>
+                </entry>
+                <entry name="666666666666">
+                    <hostname>FW6</hostname>
+                </entry>
+            </devices> 
+        </entry>
     </devicegroups>
     </result>
 </response>

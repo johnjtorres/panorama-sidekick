@@ -1,7 +1,7 @@
 import click
 
 from panorama_sidekick.panorama import Panorama
-from panorama_sidekick.show import device_groups
+from panorama_sidekick.show import device_groups, firewalls
 
 
 @click.group()
@@ -19,3 +19,4 @@ def show() -> None:
 
 
 show.add_command(device_groups)
+show.add_command(firewalls)
