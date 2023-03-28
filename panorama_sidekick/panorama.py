@@ -33,7 +33,10 @@ class Panorama:
             str: XML output.
         """
         url = f"https://{self.hostname}/api" + uri
-        response = requests.get(url, timeout=self.timeout, verify=self.verify)
+        headers = {"X-PAN-KEY": self.api_key}
+        response = requests.get(
+            url, headers=headers, timeout=self.timeout, verify=self.verify
+        )
         response.raise_for_status()
         return response.text
 
