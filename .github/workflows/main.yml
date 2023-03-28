@@ -51,6 +51,7 @@ jobs:
           source .venv/bin/activate
           ruff check panorama_sidekick/ tests/
           black panorama_sidekick/ tests/ --check
+          mypy --strict panorama_sidekick/ tests/
 
       - name: Run tests
         run: |
