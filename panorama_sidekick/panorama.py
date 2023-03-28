@@ -32,7 +32,7 @@ class Panorama:
         Returns:
             str: XML output.
         """
-        url = f"https://{self.hostname}" + uri
+        url = f"https://{self.hostname}/api" + uri
         response = requests.get(url, timeout=self.timeout, verify=self.verify)
         response.raise_for_status()
         return response.text
