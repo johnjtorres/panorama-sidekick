@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "panorama-sidekick"
-version = "0.1.1"
+version = "0.1.2"
 description = "A CLI application to get helpful information from a Palo Alto Panorama device. "
 authors = ["John Torres <johnnyjamestorres@outlook.com>"]
 readme = "README.md"
