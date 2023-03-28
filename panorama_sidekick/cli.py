@@ -16,7 +16,6 @@ def cli(ctx: click.Context, hostname: str, api_key: str) -> None:
 @cli.group()
 def show():
     """Command group for showing lists of things."""
-    pass
 
 
 show.add_command(device_groups)
