@@ -5,7 +5,7 @@ from click.testing import CliRunner
 
 
 @pytest.fixture
-def runner():
+def runner() -> CliRunner:
     """Imitate commands entered in the CLI."""
     env = {"PANORAMA_HOSTNAME": "TEST", "PANORAMA_KEY": "TEST"}
     return CliRunner(env=env)
