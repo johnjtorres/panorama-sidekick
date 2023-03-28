@@ -31,13 +31,13 @@ class Panorama:
 
         Returns:
             str: XML output.
-        """ """"""
+        """
         url = f"https://{self.hostname}" + uri
         response = requests.get(url, timeout=self.timeout, verify=self.verify)
         response.raise_for_status()
         return response.text
 
-    def op(self, cmd: str) -> str:
+    def operational(self, cmd: str) -> str:
         """Run operational commands.
 
         Args:

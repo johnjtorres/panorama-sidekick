@@ -9,7 +9,7 @@ import click
 @click.pass_obj
 def device_groups(panorama):
     cmd = "<show><devicegroups/></show>"
-    show_devicegroups = panorama.op(cmd)
+    show_devicegroups = panorama.operational(cmd)
     tree = ET.fromstring(show_devicegroups)
     device_group_names = "\n".join(
         dg.attrib["name"] for dg in tree.findall(".//devicegroups/entry")
