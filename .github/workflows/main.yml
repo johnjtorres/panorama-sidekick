@@ -26,6 +26,7 @@ jobs:
         with:
           path: ~/.local
           key: poetry-0 # increment to reset cache
+
       - name: Install Poetry
         if: steps.cached-poetry.outputs.cache-hit != 'true'
         uses: snok/install-poetry@v1
