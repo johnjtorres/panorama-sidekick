@@ -18,6 +18,14 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get changed python files
+        id: changed-python-files
+        uses: tj-actions/changed-files@v35
+        with:
+          files: **/*.py
 
       - name: Set up python ${{ matrix.python-version }}
         id: setup-python
@@ -58,15 +66,15 @@ jobs:
 
       - name: Run linting
         run: |
-          ruff check panorama_sidekick/ tests/
+          ruff check ${{ steps.changed-python-files.outputs.all_changed_files }}
 
       - name: Run formatter
         run: |
-          black --check panorama_sidekick/ tests/
+          black --check ${{ steps.changed-python-files.outputs.all_changed_files }}
 
       - name: Run type checker
         run: |
-          mypy --strict panorama_sidekick/ tests/
+          mypy --strict ${{ steps.changed-python-files.outputs.all_changed_files }}
 
       - name: Run tests
         run: |
