@@ -30,21 +30,21 @@ jobs:
 
       - name: Set up python ${{ matrix.python-version }}
         id: setup-python
-        if: steps.changed-python-files.outputs.any_changed == "true"
+        if: steps.changed-python-files.outputs.any_changed == 'true'
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
 
       - name: Load cached Poetry installation
         id: cached-poetry
-        if: steps.changed-python-files.outputs.any_changed == "true"
+        if: steps.changed-python-files.outputs.any_changed == 'true'
         uses: actions/cache@v3
         with:
           path: ~/.local
           key: poetry-0 # increment to reset cache
 
       - name: Install Poetry
-        if: steps.cached-poetry.outputs.cache-hit != "true" && steps.changed-python-files.outputs.any_changed == "true"
+        if: steps.cached-poetry.outputs.cache-hit != 'true' && steps.changed-python-files.outputs.any_changed == 'true'
         uses: snok/install-poetry@v1
         with:
           virtualenvs-create: true
@@ -53,38 +53,38 @@ jobs:
 
       - name: Load cached venv
         id: cached-poetry-dependencies
-        if: steps.changed-python-files.outputs.any_changed == "true"
+        if: steps.changed-python-files.outputs.any_changed == 'true'
         uses: actions/cache@v3
         with:
           path: .venv
           key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
 
       - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != "true" && steps.changed-python-files.outputs.any_changed == "true"
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true' && steps.changed-python-files.outputs.any_changed == 'true'
         run: poetry install --no-interaction
 
       - name: Activate virtualenv
-        if: steps.changed-python-files.outputs.any_changed == "true"
+        if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
           . .venv/bin/activate
           echo PATH=$PATH >> $GITHUB_ENV
 
       - name: Run linting
-        if: steps.changed-python-files.outputs.any_changed == "true"
+        if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
           ruff check ${{ steps.changed-python-files.outputs.all_changed_files }}
 
       - name: Run formatter
-        if: steps.changed-python-files.outputs.any_changed == "true"
+        if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
           black --check ${{ steps.changed-python-files.outputs.all_changed_files }}
 
       - name: Run type checker
-        if: steps.changed-python-files.outputs.any_changed == "true"
+        if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
           mypy --strict ${{ steps.changed-python-files.outputs.all_changed_files }}
 
       - name: Run tests
-        if: steps.changed-python-files.outputs.any_changed == "true"
+        if: steps.changed-python-files.outputs.any_changed == 'true'
         run: |
           pytest tests/
