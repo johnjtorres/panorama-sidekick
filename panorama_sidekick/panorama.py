@@ -37,7 +37,7 @@ class Panorama:
         response.raise_for_status()
         return response.text
 
-    Def operational_command(self, cmd: str) -> str:
+    def operational_command(self, cmd: str) -> str:
         """Run operational commands.
 
         Args:
