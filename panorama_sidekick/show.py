@@ -14,10 +14,11 @@ def device_groups(panorama: Panorama) -> None:
     cmd = "<show><devicegroups/></show>"
     show_devicegroups = panorama.operational_command(cmd)
     tree = ET.fromstring(show_devicegroups)
-    device_group_names = "\n".join(
+    device_group_names = {
         dg.attrib["name"] for dg in tree.findall(".//devicegroups/entry")
-    )
-    click.echo(device_group_names)
+    }
+    device_group_names_formatted = "\n".join(sorted(device_group_names))
+    click.echo(device_group_names_formatted)
 
 
 @click.command()
