@@ -47,7 +47,6 @@ jobs:
         run: poetry install --no-interaction
 
       - name: Run linting
-        if: ${{ matrix.python-version == "3.10" }}
         run: |
           source .venv/bin/activate
           ruff check panorama_sidekick/ tests/
